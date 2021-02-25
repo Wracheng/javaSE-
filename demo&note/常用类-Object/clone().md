@@ -30,7 +30,19 @@ public class MyClass {
     }
 }
 
+// 主函数就在类中的情况
+public class CloneClass{
+    int money = 100;
+    public static void main(String[] args) {
+        CloneClass cc = new CloneClass();
+        // java.lang.CloneNotSupportedException: com.moxi.demo.CloneClass
+        CloneClass cclone = cc.clone();
+    }
+}
+
+
 ```
+
 上述结果可知直接使用会抛出一个异常无法使用clone()
 
 ``` java
@@ -59,6 +71,17 @@ public class MyClass {
         System.out.println(cc.money); // 100 clone()后修改克隆的对象对原对象不影响【目前只试了基本类型】
     }
 }
+
+// 主函数就在类中
+public class CloneClass implements Cloneable{
+    int money = 100;
+    public static void main(String[] args) {
+        CloneClass cc = new CloneClass();
+        // java.lang.CloneNotSupportedException: com.moxi.demo.CloneClass
+        CloneClass cclone = cc.clone();
+    }
+}
+
 // 思考Cloneable为什么能让异常消失？
 Cloneable 作为一个标志，表明这个类能被克隆，jvm里会去判断有没有实现这个类来决定抛不抛出异常
 ```
