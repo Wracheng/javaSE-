@@ -86,7 +86,7 @@ public class CloneClass implements Cloneable{
 Cloneable 作为一个标志，表明这个类能被克隆，jvm里会去判断有没有实现这个类来决定抛不抛出异常
 ```
 
-上述只是作为一个clone()的使用例子，但上述的使用方式太局限了：最大的局限在于由于clone()是Object的protected方法无法在其他类的主函数上使用，上述方式不适合使用，于是乎就有了另一种方式重写clone()
+上述只是作为一个clone()的使用例子，但上述的使用方式太局限了：最大的局限在于由于clone()是Object的protected方法无法在**其他类**的主函数上使用，上述方式不适合使用，于是乎就有了另一种方式重写clone()
 
 ```java
   
