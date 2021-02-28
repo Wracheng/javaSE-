@@ -66,20 +66,64 @@
 }
 ```
 ```java
-    // trim() 去掉两边空格
+    // equalsIgnoreCase 比较两个字符串的内容（忽略大小写）
     public class StudyString {
     public static void main(String[] args) {
-        String str1 = new String(" abcd ");
-        System.out.println(str1.trim()); // abcd
+        String str1 = new String("abcd");
+        String str2 = new String("aBCd");
+        System.out.println(str1.equalsIgnoreCase(str2)); // true
     }
 }
 ```
 ```java
-    // substring() 去掉两边空格
+    // trim() 去掉两边空格
     public class StudyString {
     public static void main(String[] args) {
-        String str1 = new String(" abcd ");
-        System.out.println(str1.trim()); // abcd
+        String str = new String(" abcd ");
+        System.out.println(str.trim()); // abcd
+    }
+}
+```
+```java
+    // substring() 截取字符串 (通用，返回String类型)
+    public class StudyString {
+    public static void main(String[] args) {
+        String str = new String(" abcd ");
+        System.out.println(str.substring(0)); // abcd
+        System.out.println(str.substring(1)); // bcd
+        System.out.println(str.substring(0,2)); // ab
+        StringBuffer str1 = new StringBuffer("abcd");
+        String s = str1.substring(0,2); // 很容易在这出错
+        System.out.println(s); // ab
+    }
+}
+```
+```java
+    // contains 字符串是否包含另一个字符串
+    public class StudyString {
+    public static void main(String[] args) {
+        String str = new String("abcd");
+        System.out.println(str.contains("cd")); // true
+        System.out.println(str.contains("")); // true
+    }
+}
+```
+```java
+    // startsWith、endsWith
+    public class StudyString {
+    public static void main(String[] args) {
+        String str = new String("abcd");
+        System.out.println(str.startsWith("ab")); // true
+        System.out.println(str.endsWith("d")); // true
+    }
+}
+```
+```java
+    // replace、replaceFirst、replaceAll
+    public class StudyString {
+    public static void main(String[] args) {
+        String str = "abcdabcdabcd";
+        System.out.println(str.replace("ab","xx")); // xxcdxxcdxxcd  全部符合条件的替换,这与js不同
     }
 }
 ```
