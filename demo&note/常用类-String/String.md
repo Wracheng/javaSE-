@@ -119,11 +119,15 @@
 }
 ```
 ```java
-    // replace、replaceFirst、replaceAll
+    // replace、replaceFirst、replaceAll  String的replace和StringBuffer的replace用法不同
     public class StudyString {
     public static void main(String[] args) {
         String str = "abcdabcdabcd";
         System.out.println(str.replace("ab","xx")); // xxcdxxcdxxcd  全部符合条件的替换,这与js不同
+        System.out.println(str.replace('a','x')); // xbcdxbcdxbcd 前后都为字符
+        System.out.println(str.replaceFirst("ab","xx")); // xxcdabcdabcd
+        System.out.println(str.replaceAll("a","x")); // xbcdxbcdxbcd 但要注意第一个参数是正则不是字符串
+        System.out.println(str.replaceAll("good","x")); // abcdabcdabcd 没匹配上返回原字符串
     }
 }
 ```
