@@ -86,8 +86,33 @@ public class CloneClass implements Cloneable{
 Cloneable 作为一个标志，表明这个类能被克隆，jvm里会去判断有没有实现这个类来决定抛不抛出异常
 ```
 
-上述只是作为一个clone()的使用例子，但上述的使用方式太局限了：最大的局限在于由于clone()是Object的protected方法无法在**其他类**的主函数上使用，上述方式不适合使用，于是乎就有了另一种方式重写clone()
+上述只是作为一个clone()的使用例子，但上述的使用方式太局限了：最大的局限在于由于clone()是Object的protected方法无法在**其他类**的主函数上使用，上述方式不适合使用，于是乎就有了另一种方式重写clone();
 
 ```java
-  
+  // 在你想要复制的对象所在的类中去重写clone方法
+  public class CloneClass implements Cloneable {
+    int a = 5;
+    String s = "AMD yes!";
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+
+// myClass
+public class MyClass {
+    public static void main(String[] args) {
+        CloneClass cloneClass = new CloneClass();
+        try {
+            CloneClass clone = (CloneClass) cloneClass.clone();
+            clone.a = 6;
+            clone.s = "intel good";
+            System.out.println(cloneClass.a); // 5   说明基本类型克隆出来的和源对象互不干扰
+            System.out.println(cloneClass.s);
+        }catch (CloneNotSupportedException e){
+            e.printStackTrace();
+        }
+    }
+}
+// 关于clone讲的非常好https://blog.csdn.net/zhangjg_blog/article/details/18369201
 ```
