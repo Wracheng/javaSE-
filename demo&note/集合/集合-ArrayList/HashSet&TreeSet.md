@@ -1,4 +1,4 @@
-#### HashSet 
+#### HashSet 和 TreeSet
 ```java
   public class HashSet1 {
     public static void main(String[] args) {
